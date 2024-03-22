@@ -1,6 +1,7 @@
 const notes = require('express').Router();
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, writeToFile, readAndAppend } = require('../helpers/fsUtils');
 // const { v4: uuidv4 } = require('uuid');
+const fs = require('fs')
 
 // GET Route for retrieving all the tips
 notes.get('/', (req, res) => {
@@ -30,31 +31,17 @@ notes.post('/', (req, res) => {
 // DELETE Route for deleting notes
 
 notes.delete('/:id', (req, res) => {
-    console.log(req.params.id)
-    res.send(`${req.method}`)
-    fetch('/api/notes/:id', {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-          },
+    readFromFile('./db/db.json')
+    .then((data) => {
+      let newList = JSON.parse(data)
+      for (let i=0; i < newList.length; i++) {
+        if (req.params.id === newList[i].id) {
+          newList.splice([i],1)
+          writeToFile('./db/db.json', newList)
+          res.json(`selected note has been deleted`)
+        }
+      }
     })
-})
-
-// app.get('/api/reviews/:review_id', (req, res) => {
-//     if (req.params.review_id) {
-//       console.info(`${req.method} request received to get a single a review`);
-//       const reviewId = req.params.review_id;
-//       for (let i = 0; i < reviews.length; i++) {
-//         const currentReview = reviews[i];
-//         if (currentReview.review_id === reviewId) {
-//           res.json(currentReview);
-//           return;
-//         }
-//       }
-//       res.status(404).send('Review not found');
-//     } else {
-//       res.status(400).send('Review ID not provided');
-//     }
-//   });
+  })
 
 module.exports = notes;

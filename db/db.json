@@ -1,22 +1,12 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text",
-        "id": "abc"
+        "title": "Hello",
+        "text": "I am a text\n",
+        "id": "aca7f49c-fcb6-4a1a-813d-ba04d89cbbfe"
     },
     {
-        "title": "sdf",
-        "text": "sdf",
-        "id": "410ca9aa-1b35-4b8f-96bd-fa0682d66d91"
-    },
-    {
-        "title": "It's working",
-        "text": "idk",
-        "id": "de7a3438-ad4a-4851-b7b6-9f7d3b717978"
-    },
-    {
-        "title": "It's workingnnn",
-        "text": "lksjdlkfjs",
-        "id": "26ef7a86-272b-4b3a-8e4a-0ac5228d9a28"
+        "title": "This is cool",
+        "text": "I love this note taker app",
+        "id": "335ef6a7-3b08-44b0-924f-639ab4f326ce"
     }
 ]
