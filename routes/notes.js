@@ -47,7 +47,7 @@ notes.delete('/:id', (req, res) => {
           // then this updated array of objects is written as a brand new data into db.json file.
           writeToFile('./db/db.json', newList)
           // once done, responds with a message completing the delete request response.
-          res.json(`selected note has been deleted`)
+          res.json({msg:`selected note has been deleted`})
         } else {
           res.status(404).send('Something went wrong... Such ID does not exist for delete...')
         }
